@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Edu Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #1d4ed8, #9333ea);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background: #2563eb;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        .features {
+            padding: 3rem 1rem;
+            background: #f9f9f9;
+        }
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .feature {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1 1 calc(33.333% - 1rem);
+            max-width: calc(33.333% - 1rem);
+        }
+        .demo {
+            padding: 3rem 1rem;
+            background: #eef2ff;
+        }
+        .demo h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .contact {
+            padding: 3rem 1rem;
+            background: #f9f9f9;
+        }
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .contact p {
+            text-align: center;
+            font-size: 1.25rem;
+        }
+        .footer {
+            background: #1f2937;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .chatbot-container {
+    position: relative;
+    width: 50%;
+    max-width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chatbot-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.chatbot-container iframe {
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Coach Edu</h1>
+            <p>Votre assistant fiable pour tous vos besoins, spécialisé dans l'accompagnement des étudiants en alternance en informatique.</p>
+            <a href="#demo" class="btn-primary">Essayez la démo</a>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Fonctionnalités</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>Support Client</h3>
+                    <p>Assistance 24/7 pour répondre aux questions des étudiants.</p>
+                </div>
+                <div class="feature">
+                    <h3>Suivi de Projets</h3>
+                    <p>Suivez facilement vos livrables académiques et professionnels.</p>
+                </div>
+                <div class="feature">
+                    <h3>Ressources Informatiques</h3>
+                    <p>Accédez à des guides et des ressources pour vos études en alternance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="demo" class="demo">
+    <div class="container">
+        <h2>Démo du Chatbot</h2>
+        <div class="chatbot-container" style="width: 50%; max-width: 600px; height: 500px; margin: 0 auto; position: relative;">
+    
+            <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
+        </div>
+    </div>
+</section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-Nous</h2>
+            <p>Pour toute question ou information, vous pouvez me contacter par email à <a href="mailto:mine19n@gmail.com">mine19n@gmail.com</a>.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Coach Edu. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
