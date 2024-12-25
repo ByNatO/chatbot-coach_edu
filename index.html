@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach Edu Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             margin: 0;
@@ -52,9 +51,9 @@
         }
         .feature-list {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
             flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
         }
         .feature {
             background: #fff;
@@ -62,8 +61,20 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
             text-align: center;
-            flex: 1 1 calc(33.333% - 1rem);
-            max-width: calc(33.333% - 1rem);
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+        @media (min-width: 768px) {
+            .feature {
+                flex: 1 1 calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+        }
+        @media (min-width: 1024px) {
+            .feature {
+                flex: 1 1 calc(33.333% - 1rem);
+                max-width: calc(33.333% - 1rem);
+            }
         }
         .demo {
             padding: 3rem 1rem;
@@ -72,6 +83,13 @@
         .demo h2 {
             text-align: center;
             margin-bottom: 1rem;
+        }
+        .chatbot-container {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
         }
         .contact {
             padding: 3rem 1rem;
@@ -92,27 +110,18 @@
             text-align: center;
             padding: 1rem;
         }
-        .chatbot-container {
-    position: relative;
-    width: 50%;
-    max-width: 600px;
-    height: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.chatbot-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-}
-
-.chatbot-container iframe {
-    border-radius: 10px;
-}
-
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .btn-primary {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -144,15 +153,14 @@
         </div>
     </section>
 
-   <section id="demo" class="demo">
-    <div class="container">
-        <h2>Démo du Chatbot</h2>
-        <div class="chatbot-container" style="width: 50%; max-width: 600px; height: 500px; margin: 0 auto; position: relative;">
-    
-            <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2>Démo du Chatbot</h2>
+            <div class="chatbot-container">
+                <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="contact" class="contact">
         <div class="container">
