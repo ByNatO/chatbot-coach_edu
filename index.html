@@ -15,6 +15,7 @@
             color: #333;
             line-height: 1.6;
             background-color: #f4f4f9;
+            transition: all 0.3s ease;
         }
         .header {
             background: linear-gradient(135deg, #1d4ed8, #9333ea);
@@ -22,6 +23,7 @@
             text-align: center;
             padding: 6rem 1rem;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            transition: all 0.3s ease;
         }
         .header h1 {
             font-size: 3rem;
@@ -53,6 +55,7 @@
         .features {
             padding: 4rem 1rem;
             background: #fff;
+            transition: all 0.3s ease;
         }
         .features h2 {
             text-align: center;
@@ -94,22 +97,11 @@
             color: #1d4ed8;
             margin-bottom: 1rem;
         }
-        @media (min-width: 768px) {
-            .feature {
-                flex: 1 1 calc(50% - 1rem);
-                max-width: calc(50% - 1rem);
-            }
-        }
-        @media (min-width: 1024px) {
-            .feature {
-                flex: 1 1 calc(33.333% - 1rem);
-                max-width: calc(33.333% - 1rem);
-            }
-        }
         .demo {
             padding: 4rem 1rem;
             background: #eef2ff;
             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            transition: all 0.3s ease;
         }
         .demo h2 {
             text-align: center;
@@ -126,10 +118,12 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
         .contact {
             padding: 4rem 1rem;
             background: #fff;
+            transition: all 0.3s ease;
         }
         .contact h2 {
             text-align: center;
@@ -156,25 +150,34 @@
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
+            transition: all 0.3s ease;
         }
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            .header p {
-                font-size: 1rem;
-            }
-            .btn-primary {
-                font-size: 1rem;
-                padding: 0.75rem 1.5rem;
-            }
+
+        /* Immersive Chat Mode */
+        body.immersive-mode .header,
+        body.immersive-mode .features,
+        body.immersive-mode .contact,
+        body.immersive-mode .footer {
+            display: none; /* Hide other sections */
+        }
+        body.immersive-mode .demo {
+            padding: 2rem 1rem;
+            clip-path: none;
+            background: #eef2ff;
+        }
+        body.immersive-mode .chatbot-container {
+            width: 100%;
+            max-width: 100%;
+            height: 80vh;
+            border-radius: 0;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <h1>Coach Edu</h1>
+            <h1>Coach Edu 🚀</h1>
             <p>Votre partenaire intelligent pour réussir votre alternance en informatique ! Que vous ayez besoin d'aide pour vos projets, vos livrables ou vos études, Coach Edu est là pour vous guider à chaque étape. 📚💻</p>
             <a href="#demo" class="btn-primary">Découvrez la démo 🎯</a>
         </div>
@@ -207,7 +210,7 @@
         <div class="container">
             <h2>Démo du Chatbot 🤖</h2>
             <div class="chatbot-container">
-                <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
+                <iframe id="chatbot-iframe" src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
             </div>
         </div>
     </section>
@@ -222,5 +225,19 @@
     <footer class="footer">
         <p>&copy; 2024 Omar Badiane. Tous droits réservés. 🚀</p>
     </footer>
+
+    <script>
+        // Function to toggle immersive mode
+        function toggleImmersiveMode() {
+            document.body.classList.toggle('immersive-mode');
+        }
+
+        // Detect when the chatbot iframe is interacted with
+        const chatbotIframe = document.getElementById('chatbot-iframe');
+        chatbotIframe.onload = function () {
+            chatbotIframe.contentWindow.addEventListener('focus', toggleImmersiveMode);
+            chatbotIframe.contentWindow.addEventListener('blur', toggleImmersiveMode);
+        };
+    </script>
 </body>
 </html>
