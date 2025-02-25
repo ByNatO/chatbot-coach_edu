@@ -5,64 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach Edu Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: #333;
             line-height: 1.6;
+            background-color: #f4f4f9;
         }
         .header {
             background: linear-gradient(135deg, #1d4ed8, #9333ea);
             color: #fff;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 6rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
         .header p {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .btn-primary {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
             color: #fff;
             background: #2563eb;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.3s;
         }
         .btn-primary:hover {
             background: #1d4ed8;
+            transform: translateY(-5px);
         }
         .features {
-            padding: 3rem 1rem;
-            background: #f9f9f9;
+            padding: 4rem 1rem;
+            background: #fff;
         }
         .features h2 {
             text-align: center;
             margin-bottom: 2rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: #1d4ed8;
         }
         .feature-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 2rem;
             justify-content: center;
         }
         .feature {
             background: #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
             flex: 1 1 100%;
             max-width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .feature h3 {
+            font-size: 1.5rem;
+            color: #1d4ed8;
+            margin-bottom: 1rem;
+        }
+        .feature p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .feature .icon {
+            font-size: 3rem;
+            color: #1d4ed8;
+            margin-bottom: 1rem;
         }
         @media (min-width: 768px) {
             .feature {
@@ -77,12 +107,15 @@
             }
         }
         .demo {
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
             background: #eef2ff;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
         }
         .demo h2 {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #1d4ed8;
         }
         .chatbot-container {
             width: 85%;
@@ -90,25 +123,39 @@
             height: 500px;
             margin: 0 auto;
             position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .contact {
-            padding: 3rem 1rem;
-            background: #f9f9f9;
+            padding: 4rem 1rem;
+            background: #fff;
         }
         .contact h2 {
             text-align: center;
             margin-bottom: 2rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: #1d4ed8;
         }
         .contact p {
             text-align: center;
             font-size: 1.25rem;
+            color: #555;
+        }
+        .contact-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
         }
         .footer {
             background: #1f2937;
             color: #fff;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem;
+            margin-top: 4rem;
         }
         @media (max-width: 600px) {
             .header h1 {
@@ -118,44 +165,47 @@
                 font-size: 1rem;
             }
             .btn-primary {
-                font-size: 0.875rem;
-                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-    <div class="container">
-        <h1>Coach Edu</h1>
-        <p>Votre partenaire intelligent pour réussir votre alternance en informatique ! Que vous ayez besoin d'aide pour vos projets, vos livrables ou vos études, Coach Edu est là pour vous guider à chaque étape.</p>
-        <a href="#demo" class="btn-primary">Découvrez la démo</a>
-    </div>
-</header>
+        <div class="container">
+            <h1>Coach Edu 🚀</h1>
+            <p>Votre partenaire intelligent pour réussir votre alternance en informatique ! Que vous ayez besoin d'aide pour vos projets, vos livrables ou vos études, Coach Edu est là pour vous guider à chaque étape. 📚💻</p>
+            <a href="#demo" class="btn-primary">Découvrez la démo 🎯</a>
+        </div>
+    </header>
 
-<section id="features" class="features">
-    <div class="container">
-        <h2>Ce que nous vous offrons</h2>
-        <div class="feature-list">
-            <div class="feature">
-                <h3>Assistance 24/7</h3>
-                <p>Des réponses rapides et précises à toutes vos questions, disponibles à tout moment.</p>
-            </div>
-            <div class="feature">
-                <h3>Gestion de Projets</h3>
-                <p>Un outil simple pour organiser et suivre vos livrables académiques et professionnels.</p>
-            </div>
-            <div class="feature">
-                <h3>Ressources Expertes</h3>
-                <p>Des guides pratiques, des tutoriels et des conseils pour exceller dans vos études et votre alternance.</p>
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Ce que nous vous offrons 🎁</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <h3>Assistance 24/7 ⏰</h3>
+                    <p>Des réponses rapides et précises à toutes vos questions, disponibles à tout moment. 💬</p>
+                </div>
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-tasks"></i></div>
+                    <h3>Gestion de Projets 📊</h3>
+                    <p>Un outil simple pour organiser et suivre vos livrables académiques et professionnels. 📂</p>
+                </div>
+                <div class="feature">
+                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Ressources Expertes 📘</h3>
+                    <p>Des guides pratiques, des tutoriels et des conseils pour exceller dans vos études et votre alternance. 🎓</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="demo" class="demo">
         <div class="container">
-            <h2>Démo du Chatbot</h2>
+            <h2>Démo du Chatbot 🤖</h2>
             <div class="chatbot-container">
                 <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
             </div>
@@ -164,13 +214,13 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contactez-Nous</h2>
-            <p>Pour toute question ou information, n'hésitez pas à <a href="mailto:mine19n@gmail.com" class="contact-link">nous contacter par e-mail</a>.</p>
+            <h2>Contactez-Nous 📧</h2>
+            <p>Pour toute question ou information, n'hésitez pas à <a href="mailto:mine19n@gmail.com" class="contact-link">nous contacter par e-mail</a>. 📩</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2024 Omar Badiane. Tous droits réservés.</p>
+        <p>&copy; 2024 Omar Badiane. Tous droits réservés. 🚀</p>
     </footer>
 </body>
 </html>
