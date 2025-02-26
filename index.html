@@ -114,8 +114,7 @@
             color: #1d4ed8;
         }
         .chatbot-container {
-            width: 90%; /* Wider chatbot container */
-            max-width: 800px; /* Increased max-width */
+            width: 100%; /* Full width */
             height: 500px;
             margin: 0 auto;
             position: relative;
@@ -176,7 +175,6 @@
                 padding: 0.5rem 1rem;
             }
             .chatbot-container {
-                width: 95%; /* Adjust for smaller screens */
                 height: 400px; /* Adjust height for mobile */
             }
         }
@@ -244,8 +242,8 @@
             const chatbotContainer = document.querySelector('.chatbot-container');
             document.body.classList.toggle('immersive-mode');
             overlay.style.display = document.body.classList.contains('immersive-mode') ? 'block' : 'none';
-            chatbotContainer.style.width = document.body.classList.contains('immersive-mode') ? '95%' : '90%';
-            chatbotContainer.style.maxWidth = document.body.classList.contains('immersive-mode') ? '1200px' : '800px';
+            chatbotContainer.style.width = '100%'; // Always full width in immersive mode
+            chatbotContainer.style.height = document.body.classList.contains('immersive-mode') ? '90vh' : '500px';
         }
 
         // Detect when the chatbot iframe is interacted with
