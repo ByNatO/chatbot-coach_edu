@@ -74,13 +74,6 @@
             text-align: center;
             flex: 1 1 100%;
             max-width: 100%;
-            opacity: 0; /* Start invisible */
-            transform: translateY(20px); /* Start slightly below */
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .feature.visible {
-            opacity: 1; /* Fully visible */
-            transform: translateY(0); /* Move to original position */
         }
         .feature h3 {
             font-size: 1.5rem;
@@ -112,6 +105,7 @@
             padding: 4rem 1rem;
             background: #eef2ff;
             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            position: relative;
         }
         .demo h2 {
             text-align: center;
@@ -120,14 +114,25 @@
             color: #1d4ed8;
         }
         .chatbot-container {
-            width: 85%;
-            max-width: 600px;
+            width: 90%; /* Wider chatbot container */
+            max-width: 800px; /* Increased max-width */
             height: 500px;
             margin: 0 auto;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2; /* Ensure chatbot is above the overlay */
+        }
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            z-index: 1; /* Below the chatbot */
         }
         .contact {
             padding: 4rem 1rem;
@@ -170,21 +175,25 @@
                 font-size: 0.875rem;
                 padding: 0.5rem 1rem;
             }
+            .chatbot-container {
+                width: 95%; /* Adjust for smaller screens */
+                height: 400px; /* Adjust height for mobile */
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <h1>Coach Edu �</h1>
-            <p>Votre partenaire intelligent pour réussir votre alternance en informatique !</p>
+            <h1>Coach Edu 🚀</h1>
+            <p>Votre partenaire intelligent pour réussir votre alternance en informatique ! Que vous ayez besoin d'aide pour vos projets, vos livrables ou vos études, Coach Edu est là pour vous guider à chaque étape. 📚💻</p>
             <a href="#demo" class="btn-primary">Découvrez la démo 🎯</a>
         </div>
     </header>
 
     <section id="features" class="features">
         <div class="container">
-            <h2>Ce que nous vous offrons</h2>
+            <h2>Ce que nous vous offrons 🎁</h2>
             <div class="feature-list">
                 <div class="feature">
                     <div class="icon"><i class="fas fa-headset"></i></div>
@@ -209,10 +218,13 @@
         <div class="container">
             <h2>Démo du Chatbot 🤖</h2>
             <div class="chatbot-container">
-                <iframe src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
+                <iframe id="chatbot-iframe" src="https://copilotstudio.microsoft.com/environments/Default-05f72987-73cf-4b9b-b550-26a9418868f7/bots/cr978_agent/webchat?__version__=2" frameborder="0" style="width: 100%; height: 100%; border-radius: 10px;"></iframe>
             </div>
         </div>
     </section>
+
+    <!-- Dark Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <section id="contact" class="contact">
         <div class="container">
@@ -226,18 +238,22 @@
     </footer>
 
     <script>
-        // Function to add the 'visible' class to features
-        function showFeatures() {
-            const features = document.querySelectorAll('.feature');
-            features.forEach((feature, index) => {
-                setTimeout(() => {
-                    feature.classList.add('visible');
-                }, index * 100); // Delay each feature by 100ms for a staggered effect (optional)
-            });
+        // Function to toggle immersive mode
+        function toggleImmersiveMode() {
+            const overlay = document.getElementById('overlay');
+            const chatbotContainer = document.querySelector('.chatbot-container');
+            document.body.classList.toggle('immersive-mode');
+            overlay.style.display = document.body.classList.contains('immersive-mode') ? 'block' : 'none';
+            chatbotContainer.style.width = document.body.classList.contains('immersive-mode') ? '95%' : '90%';
+            chatbotContainer.style.maxWidth = document.body.classList.contains('immersive-mode') ? '1200px' : '800px';
         }
 
-        // Trigger the animation when the page loads
-        window.onload = showFeatures;
+        // Detect when the chatbot iframe is interacted with
+        const chatbotIframe = document.getElementById('chatbot-iframe');
+        chatbotIframe.onload = function () {
+            chatbotIframe.contentWindow.addEventListener('focus', toggleImmersiveMode);
+            chatbotIframe.contentWindow.addEventListener('blur', toggleImmersiveMode);
+        };
     </script>
 </body>
 </html>
